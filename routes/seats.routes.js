@@ -18,8 +18,13 @@ router.route('/seats').post((req,res) => {
         ...req.body,
     }
 
-    db.seats.push(obj3)
-    res.json({message: 'ok'})
+    seatIndx = db.seats.filter(elem => req.body.seat == elem.seat);
+    if(seatIndx.length > 0){
+        res.status(500).json({ message: "The slot is already taken..." });
+    } else{
+        db.seats.push(obj3)
+        res.json({message: 'ok'})
+    }
 })
 
 router.route('/seats/:id').delete((req, res) => {
