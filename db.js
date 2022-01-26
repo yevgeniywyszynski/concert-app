@@ -23,3 +23,7 @@
  }
 
  module.exports = db;
+/*
+client (redux) --POST--> server (db)
+client (redux) <--GET--- server (db)
+*/
